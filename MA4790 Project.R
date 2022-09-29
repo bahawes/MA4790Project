@@ -6,11 +6,13 @@ footballPre <- read.csv("footballData.csv")
 
 ## Dropped: sofifa_id, player_url, short_name, long_name,
   ## team_position, national_position, national_jersey_number
-  ## body_type
+  ## body_type, 
 
 ## Drop: player_tags, player_traits, real_face?
-  ## All Goalies? Just focus on players?
-  ## Or remove all predictors exclusive to one position?
+  ## Drop All Goalies
+  ## Drop collumns exclusive to goalies
+
+## Column for if on national team
 Drop <- c(1,2,3,4,23,27,32,33)
 football <- footballPre[-Drop]
 
