@@ -1,4 +1,7 @@
 football <- read.csv("footballData.csv")
+
+#### Data Cleaning ####
+
 #### Explore Data ####
 # Goal
 # to predict a players value from our predictors
