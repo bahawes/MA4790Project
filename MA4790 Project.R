@@ -2,20 +2,20 @@ footballPre <- read.csv("footballData.csv")
 
 #### Data Cleaning ####
 
-## pref foot -> 1,0
-
 ## Dropped: sofifa_id, player_url, short_name, long_name,
   ##  national_jersey_number, team_jersey_number, national_jersey_number
-  ## body_type, player_tags, player_traits, joined, contract_, defending_marking
+  ## body_type, player_tags, player_traits, joined, contract_valid_until, defending_marking
   ## *position stats, dob, club_name, nationality
-
-  ## Drop All Goalies
-  ## Drop columns exclusive to goalies
+  ## All Goalies rows
+  ## all predictors exclusive to goalies
 
 ## team_position -> sub or not (0 or 1)
 
+## pref foot -> 1,0
+
 ## Column for if on national team
-Drop <- c(1,2,3,4,33)
+
+Drop <- c(1,2,3,4,6,9,10,23,26,28,30,31,33,40:45,46,73,76:106)
 football <- footballPre[-Drop]
 
 
