@@ -1,4 +1,5 @@
 footballPre <- read.csv("footballData.csv")
+football <- footballPre
 library(corrplot)
 library(caret)
 library(e1071)
@@ -38,8 +39,8 @@ library(e1071)
     ## *position stats, dob, club_name, nationality
     ## All Goalies rows
     ## all predictors exclusive to goalies
-    
-    Drop <- c(1,2,3,4,6,9,10,23,26,28,30,31,33,40:45,46,73,76:106)
+    response <- football$value_eur
+    Drop <- c(1,2,3,4,6,9,10,15,23,26,28,30,31,33,40:45,46,73,76:106)
     football <- footballPre[-Drop]
     football <- subset(football,
                        !grepl("GK",football$player_positions)
@@ -93,7 +94,7 @@ library(e1071)
       
       # add new predictors and drop original predictor
         football <- cbind(football, positions_df)
-        football <- football[-10]
+        football <- football[-9]
     
     
     ## preferred_foot -> 1,0
@@ -105,7 +106,7 @@ library(e1071)
     ## nation_position -> on_national_team
       football$nation_position <- 
         ifelse(football$nation_position == "", 0, 1)
-      colnames(football)[19] <- "on_national_team"
+      colnames(football)[18] <- "on_national_team"
       football$on_national_team <- as.factor(football$on_national_team)
 
     ## real face -> 1: true, 0: false
@@ -116,7 +117,7 @@ library(e1071)
     ## loaned from -> on_loan
       football$loaned_from <- 
         ifelse(football$loaned_from == "", 0, 1)
-      colnames(football)[18] <- "on_loan"
+      colnames(football)[17] <- "on_loan"
       football$on_loan <- as.factor(football$on_loan)
   
     ## Split work rate into 2, each with dummy variables
@@ -171,7 +172,7 @@ library(e1071)
       football$DEFhigh <- as.factor(DEFhigh)
       football$DEFmed <- as.factor(DEFmed)
       
-      football <- football[-14]
+      football <- football[-13]
     
     ## League Name
       leagues <- unique(football$league_name)
